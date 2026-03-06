@@ -1,0 +1,448 @@
+<h1 id="openclaw-setup-mastery-blueprint">OpenClaw Setup &amp; Mastery
+Blueprint</h1>
+<h2 id="the-complete-guide-to-setting-up-and-using-openclaw">The
+Complete Guide to Setting Up and Using OpenClaw</h2>
+<hr />
+<h1 id="table-of-contents">TABLE OF CONTENTS</h1>
+<ol type="1">
+<li>Introduction to OpenClaw</li>
+<li>Getting Started</li>
+<li>Channel Setup</li>
+<li>Browser Automation</li>
+<li>AI Agent Mastery</li>
+<li>Automation &amp; Cron Jobs</li>
+<li>Advanced Features</li>
+<li>Security Best Practices</li>
+<li>Use Cases &amp; Examples</li>
+<li>Troubleshooting</li>
+</ol>
+<hr />
+<h1 id="chapter-1-introduction-to-openclaw">CHAPTER 1: INTRODUCTION TO
+OPENCLAW</h1>
+<h2 id="what-is-openclaw">What is OpenClaw?</h2>
+<p>OpenClaw is an AI-powered assistant that runs on your machine and can
+automate tasks, manage your communications, and work 24/7 while you
+sleep. It connects to various messaging platforms and can control web
+browsers, making it one of the most versatile AI tools available.</p>
+<h2 id="why-use-openclaw">Why Use OpenClaw?</h2>
+<ul>
+<li><strong>24/7 Automation</strong>: Your AI never sleeps</li>
+<li><strong>Multi-Platform</strong>: Works with Telegram, Discord,
+WhatsApp, Signal</li>
+<li><strong>Browser Control</strong>: Automate web tasks</li>
+<li><strong>Custom Skills</strong>: Build your own commands</li>
+<li><strong>Free to Start</strong>: Basic features are free</li>
+</ul>
+<hr />
+<h1 id="chapter-2-getting-started">CHAPTER 2: GETTING STARTED</h1>
+<h2 id="system-requirements">System Requirements</h2>
+<ul>
+<li>Node.js v18 or higher</li>
+<li>Linux, macOS, or Windows (WSL)</li>
+<li>2GB RAM minimum</li>
+<li>Internet connection</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="step-1-install-node.js">Step 1: Install Node.js</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># macOS with Homebrew</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install node</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ubuntu/Debian</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://deb.nodesource.com/setup_18.x <span class="kw">|</span> <span class="fu">sudo</span> <span class="at">-E</span> bash <span class="at">-</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> nodejs</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">--version</span></span></code></pre></div>
+<h3 id="step-2-install-openclaw">Step 2: Install OpenClaw</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install globally</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> openclaw</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or clone from GitHub</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/openclaw/openclaw.git</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> openclaw</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span></code></pre></div>
+<h3 id="step-3-initial-setup">Step 3: Initial Setup</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize OpenClaw</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> init</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Follow the prompts</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - Enter your name</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - Set up initial channel</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - Configure AI model</span></span></code></pre></div>
+<h3 id="step-4-verify-installation">Step 4: Verify Installation</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> status</span></code></pre></div>
+<p>You should see: - Version number - Connected channels - Memory usage
+- Uptime</p>
+<hr />
+<h1 id="chapter-3-channel-setup">CHAPTER 3: CHANNEL SETUP</h1>
+<h2 id="telegram-setup">Telegram Setup</h2>
+<h3 id="step-1-create-a-bot">Step 1: Create a Bot</h3>
+<ol type="1">
+<li>Open Telegram</li>
+<li>Search for <span class="citation"
+data-cites="BotFather">@BotFather</span></li>
+<li>Send <code>/newbot</code></li>
+<li>Follow instructions</li>
+<li>Copy the API token</li>
+</ol>
+<h3 id="step-2-configure-openclaw">Step 2: Configure OpenClaw</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> config add telegram</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter your bot token</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bot username</span></span></code></pre></div>
+<h3 id="step-3-start-the-bot">Step 3: Start the Bot</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> start <span class="at">--telegram</span></span></code></pre></div>
+<p>Your bot is now live! Send <code>/help</code> to see available
+commands.</p>
+<hr />
+<h2 id="discord-setup">Discord Setup</h2>
+<h3 id="step-1-create-application">Step 1: Create Application</h3>
+<ol type="1">
+<li>Go to https://discord.com/developers/applications</li>
+<li>Click “New Application”</li>
+<li>Name your bot</li>
+<li>Go to “Bot” section</li>
+<li>Click “Reset Token” and copy it</li>
+</ol>
+<h3 id="step-2-add-to-server">Step 2: Add to Server</h3>
+<ol type="1">
+<li>Go to “OAuth2” → “URL Generator”</li>
+<li>Select <code>bot</code> scope</li>
+<li>Select permissions: <code>Administrator</code> (or specific
+permissions)</li>
+<li>Copy the generated URL</li>
+<li>Open in browser and select server</li>
+</ol>
+<h3 id="step-3-configure-openclaw">Step 3: Configure OpenClaw</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> config add discord</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter your bot token</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set command prefix (default:## !)</span></span></code></pre></div>
+<hr />
+<p>WhatsApp Setup</p>
+<h3 id="using-qr-code">Using QR Code</h3>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> config add whatsapp</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Will display QR code</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Scan with WhatsApp mobile app</span></span></code></pre></div>
+<h3 id="tips">Tips</h3>
+<ul>
+<li>Keep session alive by using OpenClaw regularly</li>
+<li>QR code expires after time - regenerate if needed</li>
+</ul>
+<hr />
+<h2 id="signal-setup">Signal Setup</h2>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> config add signal</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Follow phone number verification</span></span></code></pre></div>
+<hr />
+<h1 id="chapter-4-browser-automation">CHAPTER 4: BROWSER AUTOMATION</h1>
+<h2 id="installation-1">Installation</h2>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install browser dependencies</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> browser install</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or manually</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> playwright</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">playwright</span> install chromium</span></code></pre></div>
+<h2 id="basic-browser-control">Basic Browser Control</h2>
+<h3 id="open-a-page">Open a Page</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// In your skill or command</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">open</span>(<span class="st">&#39;https://example.com&#39;</span>)</span></code></pre></div>
+<h3 id="take-screenshot">Take Screenshot</h3>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">screenshot</span>()</span></code></pre></div>
+<h3 id="click-elements">Click Elements</h3>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">click</span>(<span class="st">&#39;#submit-button&#39;</span>)</span></code></pre></div>
+<h3 id="fill-forms">Fill Forms</h3>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">fill</span>(<span class="st">&#39;#email&#39;</span><span class="op">,</span> <span class="st">&#39;user@example.com&#39;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">fill</span>(<span class="st">&#39;#password&#39;</span><span class="op">,</span> <span class="st">&#39;secret&#39;</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">click</span>(<span class="st">&#39;#login&#39;</span>)</span></code></pre></div>
+<h2 id="advanced-automation">Advanced Automation</h2>
+<h3 id="waiting-for-elements">Waiting for Elements</h3>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">waitForSelector</span>(<span class="st">&#39;.result&#39;</span><span class="op">,</span> { <span class="dt">timeout</span><span class="op">:</span> <span class="dv">5000</span> })</span></code></pre></div>
+<h3 id="handling-multiple-tabs">Handling Multiple Tabs</h3>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> tabs <span class="op">=</span> <span class="cf">await</span> browser<span class="op">.</span><span class="fu">getTabs</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">switchTab</span>(tabs[<span class="dv">1</span>])</span></code></pre></div>
+<h3 id="extract-data">Extract Data</h3>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> title <span class="op">=</span> <span class="cf">await</span> browser<span class="op">.</span><span class="fu">getText</span>(<span class="st">&#39;h1&#39;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> links <span class="op">=</span> <span class="cf">await</span> browser<span class="op">.</span><span class="fu">getAllAttributes</span>(<span class="st">&#39;a&#39;</span><span class="op">,</span> <span class="st">&#39;href&#39;</span>)</span></code></pre></div>
+<hr />
+<h1 id="chapter-5-ai-agent-mastery">CHAPTER 5: AI AGENT MASTERY</h1>
+<h2 id="understanding-agents">Understanding Agents</h2>
+<p>OpenClaw uses sub-agents to handle specialized tasks. You can spawn
+agents for: - Research tasks - Content generation - Code writing - Data
+analysis</p>
+<h2 id="creating-sub-agents">Creating Sub-Agents</h2>
+<h3 id="basic-spawn">Basic Spawn</h3>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> agent <span class="op">=</span> <span class="cf">await</span> subagents<span class="op">.</span><span class="fu">spawn</span>({</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">task</span><span class="op">:</span> <span class="st">&#39;Research the latest AI trends&#39;</span><span class="op">,</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">mode</span><span class="op">:</span> <span class="st">&#39;run&#39;</span>  <span class="co">// One-shot task</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h3 id="persistent-agent">Persistent Agent</h3>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> agent <span class="op">=</span> <span class="cf">await</span> subagents<span class="op">.</span><span class="fu">spawn</span>({</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">task</span><span class="op">:</span> <span class="st">&#39;Manage my email&#39;</span><span class="op">,</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">mode</span><span class="op">:</span> <span class="st">&#39;session&#39;</span><span class="op">,</span>  <span class="co">// Ongoing agent</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">thread</span><span class="op">:</span> <span class="kw">true</span>  <span class="co">// Can be referenced later</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h2 id="prompt-engineering">Prompt Engineering</h2>
+<h3 id="system-prompts">System Prompts</h3>
+<p>Set custom instructions in your config:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system_prompt</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  You are a professional copywriter.</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  Always write in a friendly, conversational tone.</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  Never use jargon.</span></code></pre></div>
+<h3 id="few-shot-examples">Few-Shot Examples</h3>
+<p>Include examples in your prompts:</p>
+<pre><code>Write a product description for:
+Product: Running shoes
+Tone: Energetic
+Length: 50 words
+
+Example:
+Product: Yoga mat
+Description: Find your zen with our premium yoga mat. Non-slip, eco-friendly, and perfect for any practice.</code></pre>
+<h2 id="memory-management">Memory Management</h2>
+<h3 id="short-term-memory">Short-Term Memory</h3>
+<p>OpenClaw automatically remembers the current conversation.</p>
+<h3 id="long-term-memory">Long-Term Memory</h3>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Save important info</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>memory<span class="op">.</span><span class="fu">save</span>(<span class="st">&#39;customer_preferences&#39;</span><span class="op">,</span> {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;John&#39;</span><span class="op">,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">favorite_color</span><span class="op">:</span> <span class="st">&#39;blue&#39;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Retrieve later</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> prefs <span class="op">=</span> memory<span class="op">.</span><span class="fu">get</span>(<span class="st">&#39;customer_preferences&#39;</span>)</span></code></pre></div>
+<hr />
+<h1 id="chapter-6-automation-cron-jobs">CHAPTER 6: AUTOMATION &amp; CRON
+JOBS</h1>
+<h2 id="scheduling-tasks">Scheduling Tasks</h2>
+<h3 id="basic-cron">Basic Cron</h3>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cron add <span class="st">&quot;0 9 * * *&quot;</span> morning-briefing</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Runs at 9 AM daily</span></span></code></pre></div>
+<h3 id="in-code">In Code</h3>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> cron<span class="op">.</span><span class="fu">schedule</span>(<span class="st">&#39;0 9 * * *&#39;</span><span class="op">,</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> message<span class="op">.</span><span class="fu">send</span>({</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">channel</span><span class="op">:</span> <span class="st">&#39;telegram&#39;</span><span class="op">,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">chatId</span><span class="op">:</span> <span class="st">&#39;YOUR_CHAT_ID&#39;</span><span class="op">,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">message</span><span class="op">:</span> <span class="st">&#39;Good morning! Here is your daily briefing.&#39;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h2 id="heartbeat-monitoring">Heartbeat Monitoring</h2>
+<p>Set up health checks:</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heartbeat</span><span class="kw">:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">interval</span><span class="kw">:</span><span class="at"> </span><span class="dv">300</span><span class="co">  # seconds</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> telegram</span></span></code></pre></div>
+<h2 id="example-automations">Example Automations</h2>
+<h3 id="daily-research-report">Daily Research Report</h3>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cron<span class="op">.</span><span class="fu">schedule</span>(<span class="st">&#39;0 8 * * *&#39;</span><span class="op">,</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Search for industry news</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> news <span class="op">=</span> <span class="cf">await</span> <span class="fu">web_search</span>({ <span class="dt">query</span><span class="op">:</span> <span class="st">&#39;AI trends 2026&#39;</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> <span class="dv">5</span> })</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Format and send</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> message <span class="op">=</span> <span class="fu">formatNews</span>(news)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> telegram<span class="op">.</span><span class="fu">send</span>(message)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h3 id="weekly-summary">Weekly Summary</h3>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cron<span class="op">.</span><span class="fu">schedule</span>(<span class="st">&#39;0 18 * * Friday&#39;</span><span class="op">,</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> summary <span class="op">=</span> <span class="cf">await</span> <span class="fu">generateWeeklySummary</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> discord<span class="op">.</span><span class="fu">send</span>(summary)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<hr />
+<h1 id="chapter-7-advanced-features">CHAPTER 7: ADVANCED FEATURES</h1>
+<h2 id="mcp-server-integration">MCP Server Integration</h2>
+<h3 id="what-is-mcp">What is MCP?</h3>
+<p>Model Context Protocol (MCP) lets OpenClaw connect to external tools
+and services.</p>
+<h3 id="setup">Setup</h3>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install MCP server</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @modelcontextprotocol/server-filesystem</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> config add mcp ./mcp-servers/filesystem.json</span></code></pre></div>
+<h3 id="example-configuration">Example Configuration</h3>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;mcpServers&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;filesystem&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="st">&quot;npx&quot;</span><span class="fu">,</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;args&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="ot">,</span> <span class="st">&quot;/path/to/dir&quot;</span><span class="ot">]</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h2 id="custom-skills">Custom Skills</h2>
+<h3 id="create-a-skill">Create a Skill</h3>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.openclaw/skills/my-skill</span></code></pre></div>
+<h3 id="skill-structure">Skill Structure</h3>
+<pre><code>my-skill/
+├── SKILL.md
+├── run.js
+└── config.json</code></pre>
+<h3 id="skill.md-example">SKILL.md Example</h3>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># My Custom Skill</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Description</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>Processes customer orders</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commands</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>order <span class="kw">&lt;product&gt;</span> - Place an order</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>status <span class="kw">&lt;order_id&gt;</span> - Check order status</span></code></pre></div>
+<h2 id="node-pairing">Node Pairing</h2>
+<p>Connect to your devices:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On your computer</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> node pair</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># On your phone (install OpenClaw app)</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Scan QR code</span></span></code></pre></div>
+<p>Now you can: - Take photos remotely - Get screenshots - Run commands
+on paired devices</p>
+<hr />
+<h1 id="chapter-8-security-best-practices">CHAPTER 8: SECURITY BEST
+PRACTICES</h1>
+<h2 id="api-key-management">API Key Management</h2>
+<h3 id="environment-variables">Environment Variables</h3>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Never commit keys to Git</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENAI_API_KEY</span><span class="op">=</span><span class="st">&quot;sk-...&quot;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">TELEGRAM_TOKEN</span><span class="op">=</span><span class="st">&quot;123:ABC...&quot;</span></span></code></pre></div>
+<h3 id="secrets-file">Secrets File</h3>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># config/secrets.yaml (add to .gitignore)</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">api_keys</span><span class="kw">:</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">openai</span><span class="kw">:</span><span class="at"> sk-...</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">telegram</span><span class="kw">:</span><span class="at"> 123:...</span></span></code></pre></div>
+<h2 id="access-control">Access Control</h2>
+<h3 id="rate-limiting">Rate Limiting</h3>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rate_limit</span><span class="kw">:</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">requests_per_minute</span><span class="kw">:</span><span class="at"> </span><span class="dv">60</span></span></code></pre></div>
+<h3 id="allowed-channels">Allowed Channels</h3>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allowed_channels</span><span class="kw">:</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> telegram:123456789</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> discord:channel_id</span></span></code></pre></div>
+<h2 id="safe-browsing">Safe Browsing</h2>
+<h3 id="sandbox-mode">Sandbox Mode</h3>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browser</span><span class="kw">:</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sandbox</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">headless</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<h3 id="content-security">Content Security</h3>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Don&#39;t execute unknown scripts</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> browser<span class="op">.</span><span class="fu">setContent</span>(html<span class="op">,</span> { <span class="dt">runScripts</span><span class="op">:</span> <span class="st">&#39;dangerously&#39;</span> })</span></code></pre></div>
+<hr />
+<h1 id="chapter-9-use-cases-examples">CHAPTER 9: USE CASES &amp;
+EXAMPLES</h1>
+<h2 id="use-case-1-automated-research">Use Case 1: Automated
+Research</h2>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>subagents<span class="op">.</span><span class="fu">spawn</span>({</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">task</span><span class="op">:</span> <span class="vs">`Research </span><span class="sc">${</span>topic<span class="sc">}</span><span class="vs">. Find:</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  - Latest news</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  - Top 5 companies</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="vs">  - Market trends</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="vs">  Format as bullet points.`</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h2 id="use-case-2-content-generation">Use Case 2: Content
+Generation</h2>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">generateBlogPost</span>(topic) {</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> outline <span class="op">=</span> <span class="cf">await</span> ai<span class="op">.</span><span class="fu">prompt</span>(<span class="st">&#39;Create outline for: &#39;</span> <span class="op">+</span> topic)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> content <span class="op">=</span> <span class="cf">await</span> ai<span class="op">.</span><span class="fu">prompt</span>(<span class="st">&#39;Write article from outline: &#39;</span> <span class="op">+</span> outline)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> content</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="use-case-3-customer-support">Use Case 3: Customer Support</h2>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>on<span class="op">.</span><span class="fu">message</span>(<span class="st">&#39;customer&#39;</span><span class="op">,</span> <span class="kw">async</span> (msg) <span class="kw">=&gt;</span> {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> ai<span class="op">.</span><span class="fu">prompt</span>(</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="vs">`Customer asks: </span><span class="sc">${</span>msg<span class="op">.</span><span class="at">text</span><span class="sc">}</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="vs">     Help them with their issue.`</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> message<span class="op">.</span><span class="fu">reply</span>(response)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h2 id="use-case-4-data-analysis">Use Case 4: Data Analysis</h2>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">analyzeData</span>(file) {</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> file<span class="op">.</span><span class="fu">read</span>(file)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> insights <span class="op">=</span> <span class="cf">await</span> ai<span class="op">.</span><span class="fu">prompt</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="vs">`Analyze this data and find patterns:</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="vs">     </span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(data)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> insights</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr />
+<h1 id="chapter-10-troubleshooting">CHAPTER 10: TROUBLESHOOTING</h1>
+<h2 id="common-issues">Common Issues</h2>
+<h3 id="bot-not-responding">Bot Not Responding</h3>
+<ol type="1">
+<li>Check status: <code>openclaw status</code></li>
+<li>Restart: <code>openclaw restart</code></li>
+<li>Check logs: <code>openclaw logs</code></li>
+</ol>
+<h3 id="authentication-errors">Authentication Errors</h3>
+<ul>
+<li>Verify API keys are correct</li>
+<li>Check token permissions</li>
+<li>Ensure channel is properly configured</li>
+</ul>
+<h3 id="browser-wont-start">Browser Won’t Start</h3>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reinstall browsers</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> browser install</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check dependencies</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="ex">playwright</span> install-deps</span></code></pre></div>
+<h3 id="memory-issues">Memory Issues</h3>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check memory usage</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> status</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear cache</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw</span> cache clear</span></code></pre></div>
+<h2 id="getting-help">Getting Help</h2>
+<ul>
+<li>Documentation: https://docs.openclaw.ai</li>
+<li>Discord: https://discord.gg/clawd</li>
+<li>GitHub Issues: https://github.com/openclaw/openclaw/issues</li>
+</ul>
+<hr />
+<h1 id="conclusion">CONCLUSION</h1>
+<p>Congratulations! You’re now ready to master OpenClaw. Remember:</p>
+<ol type="1">
+<li>Start simple - automate one task at a time</li>
+<li>Iterate - improve your automations gradually</li>
+<li>Learn from logs - they’re your best debugging tool</li>
+<li>Join the community - learn from others</li>
+</ol>
+<p><strong>Happy Automating!</strong> 🤖</p>
+<hr />
+<p><em>© 2026 OpenClaw Blueprint</em> <em>Version 1.0</em></p>
