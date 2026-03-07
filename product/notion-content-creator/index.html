@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion Content Creator | All-in-One Workspace for YouTubers & Bloggers</title>
+    <meta name="description" content="The ultimate Notion workspace for content creators. Plan, organize, and scale your content business.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #ef4444;
+            --primary-dark: #dc2626;
+            --secondary: #f97316;
+            --dark: #1e293b;
+            --light: #fef2f2;
+            --white: #ffffff;
+            --gray: #64748b;
+            --success: #22c55e;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; }
+        .hero .subtitle { font-size: 1.4rem; opacity: 0.95; margin-bottom: 25px; }
+        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+        .price span { font-size: 1rem; opacity: 0.8; }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover { transform: translateY(-3px); }
+        .guarantee { margin-top: 20px; font-size: 0.9rem; opacity: 0.9; }
+        
+        .features { padding: 80px 0; background: var(--white); }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .feature-card { padding: 25px; border-radius: 12px; background: var(--light); }
+        .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .feature-card p { color: var(--gray); font-size: 0.9rem; }
+        
+        .inside { padding: 80px 0; background: var(--light); }
+        .inside-list { list-style: none; }
+        .inside-list li { padding: 12px 0; border-bottom: 1px solid #fee2e2; font-size: 1.05rem; }
+        .inside-list li::before { content: "✓"; color: var(--success); font-weight: 800; margin-right: 12px; }
+        
+        .testimonial { padding: 80px 0; background: var(--white); text-align: center; }
+        .testimonial blockquote { font-size: 1.3rem; max-width: 700px; margin: 0 auto 20px; font-style: italic; }
+        
+        .pricing { padding: 80px 0; background: var(--dark); color: white; text-align: center; }
+        .pricing-card { background: white; color: var(--dark); padding: 50px; border-radius: 20px; max-width: 500px; margin: 0 auto; }
+        .pricing-card .price { color: var(--primary); }
+        .pricing-card ul { list-style: none; text-align: left; margin: 30px 0; }
+        .pricing-card li { padding: 10px 0; border-bottom: 1px solid #eee; }
+        .pricing-card li::before { content: "✓"; color: var(--success); margin-right: 10px; }
+        
+        footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
+        footer p { opacity: 0.7; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1>📺 Notion Content Creator</h1>
+            <p class="subtitle">The all-in-one workspace for YouTubers, Bloggers & Content Creators</p>
+            <div class="price">$37 <span>one-time payment</span></div>
+            <a href="https://paypal.me/rypidong/37" class="cta-button" target="_blank">Get It Now</a>
+            <p class="guarantee">🔒 Secure payment • Instant delivery • 30-day refund</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What You Get</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📺</div>
+                    <h3>YouTube Management</h3>
+                    <p>Video ideas, scripts, thumbnails, upload schedule, analytics tracker</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Blog Management</h3>
+                    <p>Post ideas, SEO research, draft workflow, publishing calendar</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Podcast Production</h3>
+                    <p>Episode planning, guest database, show notes, release schedule</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Content Calendar</h3>
+                    <p>Monthly overview, platform views, deadlines, content pillars</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Views, engagement, revenue, growth charts, comparisons</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Creator Tools</h3>
+                    <p>Equipment list, software, contracts, invoices, sponsorships</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="inside">
+        <div class="container">
+            <h2 class="section-title">What's Inside</h2>
+            <ul class="inside-list">
+                <li><strong>Video Idea Database</strong> — Never run out of content ideas</li>
+                <li><strong>Script Outlines</strong> — Ready-to-fill templates</li>
+                <li><strong>Thumbnail Planner</strong> — Design ideas & A/B testing</li>
+                <li><strong>Upload Schedule</strong> — Plan weeks in advance</li>
+                <li><strong>Guest Database</strong> — Track collaborations</li>
+                <li><strong>SEO Research</strong> — Keywords, competitors, rankings</li>
+                <li><strong>Analytics Tracker</strong> — All platforms in one view</li>
+                <li><strong>Revenue Tracker</strong> — Ads, sponsors, affiliates</li>
+                <li><strong>Sponsorship Pipeline</strong> — Brand deals management</li>
+                <li><strong>Equipment清单</strong> — Gear recommendations & reviews</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <div class="container">
+            <blockquote>"This template saved me 10 hours a week. My upload schedule is finally consistent."</blockquote>
+            <cite>— Jake M., YouTuber (50K subscribers)</cite>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-card">
+                <h2>Get Started</h2>
+                <div class="price">$37 <span>one-time</span></div>
+                <ul>
+                    <li>Complete Notion Template</li>
+                    <li>YouTube + Blog + Podcast</li>
+                    <li>Analytics Dashboard</li>
+                    <li>Revenue Tracking</li>
+                    <li>Instant Download</li>
+                    <li>30-Day Guarantee</li>
+                </ul>
+                <a href="https://paypal.me/rypidong/37" class="cta-button" target="_blank">Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Questions? Email: rypidong@gmail.com</p>
+            <p>© 2026 Notion Content Creator. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

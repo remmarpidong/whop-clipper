@@ -1,0 +1,1 @@
+0 9,12,15,18 * * * /root/.openclaw/workspace/fb-manager/post.sh >> /var/log/fb-post.log 2>&1

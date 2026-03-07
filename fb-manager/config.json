@@ -1,0 +1,21 @@
+{
+  "facebook": {
+    "pageId": "945969738609798",
+    "pageName": "AutopilotBiz",
+    "accessToken": "EAAmKJZAGdg3IBQxCpY3fA8VIPBopXG4bl4pNObRWMHZASUHtAPjjLgweMRqOzOOPjZB9TqfCgRTauMWYf3asGYgZCEC9jNu2Xln9q7o2L6t6m0kZCEiU6OQ0OAu0XDHFCpCurzgl3ZCRqtxwnbqDB2kl9uFoFfRTMZATzZBaAnveiZCGh6e0iNP8oAHqJuZBhal81HSQZDZD"
+  },
+  "schedule": {
+    "postsPerDay": 4,
+    "times": ["09:00", "12:00", "15:00", "18:00"]
+  },
+  "topics": [
+    "OpenClaw automation tips",
+    "AI employee setup",
+    "Business automation strategies",
+    "Passive income with AI",
+    "How to scale with AI",
+    "AI tools for business",
+    "No-code automation",
+    "24/7 AI business"
+  ]
+}

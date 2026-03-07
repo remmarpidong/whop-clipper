@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Setup & Skills | Complete Mastery Guide</title>
+    <meta name="description" content="Master OpenClaw with this complete guide. Tools needed, skill creation, automation setups.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --dark: #1e293b;
+            --light: #eef2ff;
+            --white: #ffffff;
+            --gray: #64748b;
+            --success: #22c55e;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; }
+        .hero .subtitle { font-size: 1.4rem; opacity: 0.95; margin-bottom: 25px; }
+        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+        .price span { font-size: 1rem; opacity: 0.8; }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover { transform: translateY(-3px); }
+        .guarantee { margin-top: 20px; font-size: 0.9rem; opacity: 0.9; }
+        
+        .section { padding: 60px 0; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; }
+        
+        .tools { background: var(--white); }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .tool-item { padding: 20px; background: var(--light); border-radius: 10px; }
+        .tool-item h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--primary); }
+        .tool-item ul { list-style: none; font-size: 0.9rem; }
+        .tool-item li { padding: 5px 0; }
+        
+        .skills { background: var(--light); }
+        .skills-list { list-style: none; }
+        .skills-list li { padding: 15px; background: var(--white); margin-bottom: 10px; border-radius: 8px; border-left: 4px solid var(--primary); }
+        
+        .code { background: var(--dark); color: #ddd; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 0.85rem; overflow-x: auto; margin: 15px 0; }
+        
+        .checklist { background: var(--white); }
+        .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .checklist-day { padding: 20px; background: var(--light); border-radius: 10px; }
+        .checklist-day h3 { color: var(--primary); margin-bottom: 15px; }
+        .checklist-day ul { list-style: none; font-size: 0.9rem; }
+        .checklist-day li { padding: 5px 0; }
+        
+        .pricing { background: var(--dark); color: white; text-align: center; padding: 80px 0; }
+        .pricing-card { background: white; color: var(--dark); padding: 50px; border-radius: 20px; max-width: 500px; margin: 0 auto; }
+        .pricing-card .price { color: var(--primary); font-size: 3rem; font-weight: 800; }
+        .pricing-card ul { list-style: none; text-align: left; margin: 30px 0; }
+        .pricing-card li { padding: 10px 0; border-bottom: 1px solid #eee; }
+        .pricing-card li::before { content: "✓"; color: var(--success); margin-right: 10px; }
+        
+        footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1>🦁 OpenClaw Setup & Skills</h1>
+            <p class="subtitle">Complete mastery guide: Tools, skills, automation</p>
+            <div class="price">$39 <span>one-time payment</span></div>
+            <a href="https://paypal.me/rypidong/39" class="cta-button" target="_blank">Get the Guide</a>
+            <p class="guarantee">🔒 Secure payment • Instant delivery • 30-day refund</p>
+        </div>
+    </section>
+
+    <section class="section tools">
+        <div class="container">
+            <h2 class="section-title">🛠️ Tools You Need</h2>
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <h3>🔧 Core</h3>
+                    <ul>
+                        <li>Node.js v18+</li>
+                        <li>VS Code editor</li>
+                        <li>Terminal</li>
+                        <li>npm or yarn</li>
+                    </ul>
+                </div>
+                <div class="tool-item">
+                    <h3>💬 Channels</h3>
+                    <ul>
+                        <li>Telegram account</li>
+                        <li>Discord account</li>
+                        <li>WhatsApp</li>
+                        <li>Gmail</li>
+                    </ul>
+                </div>
+                <div class="tool-item">
+                    <h3>📦 Hosting</h3>
+                    <ul>
+                        <li>GitHub (free)</li>
+                        <li>Vercel (free)</li>
+                        <li>Cloudflare (free)</li>
+                        <li>ngrok</li>
+                    </ul>
+                </div>
+                <div class="tool-item">
+                    <h3>💰 Business</h3>
+                    <ul>
+                        <li>PayPal business</li>
+                        <li>Gumroad</li>
+                        <li>Stripe</li>
+                        <li>Canva</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section skills">
+        <div class="container">
+            <h2 class="section-title">⚡ Skills You'll Create</h2>
+            <ul class="skills-list">
+                <li><strong>hello</strong> — Basic greeting skill</li>
+                <li><strong>blog</strong> — AI-powered blog post generator</li>
+                <li><strong>social</strong> — Multi-platform social media manager</li>
+                <li><strong>qualify</strong> — Lead scoring and qualification</li>
+                <li><strong>competitor</strong> — Competitor analysis automation</li>
+                <li><strong>trends</strong> — Trend monitoring and alerts</li>
+                <li><strong>schedule</strong> — Meeting scheduler</li>
+                <li><strong>invoice</strong> — Invoice generator</li>
+                <li><strong>weather</strong> — Weather API integration</li>
+                <li><strong>remember</strong> — Memory persistence skill</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">💻 Code Example</h2>
+            <div class="code">
+<pre>// Simple skill example
+module.exports = {
+  name: 'hello',
+  description: 'Say hello with style',
+  
+  async handler(args, context) {
+    const name = args.name || 'friend'
+    return `Hello, ${name}! 👋 Welcome!`
+  }
+}</pre>
+            </div>
+            <div class="code">
+<pre>// AI-powered skill
+module.exports = {
+  name: 'blog',
+  async handler(args, context) {
+    const { ai } = context
+    return await ai.prompt(
+      `Write a blog post about ${args.topic}`
+    )
+  }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="section checklist">
+        <div class="container">
+            <h2 class="section-title">📅 5-Day Setup Checklist</h2>
+            <div class="checklist-grid">
+                <div class="checklist-day">
+                    <h3>Day 1: Foundation</h3>
+                    <ul>
+                        <li>Install Node.js</li>
+                        <li>Install OpenClaw</li>
+                        <li>Set up Telegram bot</li>
+                        <li>Connect Discord</li>
+                    </ul>
+                </div>
+                <div class="checklist-day">
+                    <h3>Day 2: Basic Skills</h3>
+                    <ul>
+                        <li>Create hello skill</li>
+                        <li>Create help skill</li>
+                        <li>Create reminder skill</li>
+                        <li>Test all skills</li>
+                    </ul>
+                </div>
+                <div class="checklist-day">
+                    <h3>Day 3: Advanced</h3>
+                    <ul>
+                        <li>Create AI skills</li>
+                        <li>Add memory</li>
+                        <li>Connect APIs</li>
+                        <li>Test workflows</li>
+                    </ul>
+                </div>
+                <div class="checklist-day">
+                    <h3>Day 4: Automation</h3>
+                    <ul>
+                        <li>Set up cron jobs</li>
+                        <li>Create heartbeats</li>
+                        <li>Build workflows</li>
+                        <li>Test automation</li>
+                    </ul>
+                </div>
+                <div class="checklist-day">
+                    <h3>Day 5: Business</h3>
+                    <ul>
+                        <li>Lead qualification</li>
+                        <li>Content generation</li>
+                        <li>Research automation</li>
+                        <li>Deploy to production</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-card">
+                <h2>Start Building</h2>
+                <div class="price">$39 <span>one-time</span></div>
+                <ul>
+                    <li>Complete Tools List</li>
+                    <li>10+ Skill Templates</li>
+                    <li>Code Examples</li>
+                    <li>5-Day Setup Checklist</li>
+                    <li>Resources & Links</li>
+                    <li>30-Day Guarantee</li>
+                </ul>
+                <a href="https://paypal.me/rypidong/39" class="cta-button" target="_blank">Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Questions? Email: rypidong@gmail.com</p>
+            <p>© 2026 OpenClaw Setup & Skills. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
