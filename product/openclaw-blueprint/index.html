@@ -16,6 +16,7 @@
             --white: #ffffff;
             --gray: #64748b;
             --success: #22c55e;
+            --accent: #f59e0b;
         }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
@@ -31,6 +32,7 @@
         .hero .subtitle { font-size: 1.3rem; opacity: 0.95; margin-bottom: 25px; }
         .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
         .price span { font-size: 1rem; opacity: 0.8; }
+        .price-small { font-size: 1.8rem; font-weight: 700; }
         .cta-button {
             display: inline-block;
             background: white;
@@ -41,8 +43,14 @@
             border-radius: 50px;
             text-decoration: none;
             transition: transform 0.2s;
+            margin: 10px;
         }
         .cta-button:hover { transform: translateY(-3px); }
+        .cta-button-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
         .guarantee { margin-top: 20px; font-size: 0.9rem; opacity: 0.9; }
         
         .features { padding: 60px 0; background: white; }
@@ -54,11 +62,18 @@
         .feature-card p { color: var(--gray); font-size: 0.9rem; }
         
         .products { padding: 60px 0; background: var(--light); }
+        .section-subtitle { text-align: center; color: var(--gray); margin-bottom: 30px; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product-card { background: white; padding: 25px; border-radius: 12px; }
+        .product-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .product-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
         .product-card .price-tag { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
         .product-card p { color: var(--gray); font-size: 0.9rem; margin: 10px 0; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 10px; }
+        .badge-new { background: #dbeafe; color: #1d4ed8; }
+        .badge-subscription { background: #fef3c7; color: #d97706; }
+        
+        .membership { padding: 60px 0; background: linear-gradient(135deg, var(--dark) 0%, #334155 100%); color: white; }
+        .membership .cta-button { background: var(--accent); color: var(--dark); }
         
         .inside { padding: 60px 0; background: white; }
         .inside-list { list-style: none; }
@@ -71,6 +86,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .price { font-size: 2.2rem; }
+            .cta-button { display: block; margin: 10px auto; }
         }
     </style>
 </head>
@@ -78,47 +94,102 @@
     <section class="hero">
         <div class="container">
             <div class="logo">🦁 OpenClaw Pro</div>
-            <h1>OpenClaw Setup & Mastery Blueprint</h1>
-            <p class="subtitle">The complete guide to setting up and using OpenClaw as your personal AI assistant</p>
-            <div class="price">$29 <span>one-time payment</span></div>
-            <a href="https://paypal.me/rypidong/29" class="cta-button" target="_blank">Buy Now with PayPal</a>
+            <h1>AI Automation Business Bundle</h1>
+            <p class="subtitle">Master AI automation, build your SaaS, and create digital products that sell</p>
+            <div class="price">$49 <span>one-time payment</span></div>
+            <a href="https://paypal.me/rypidong/49" class="cta-button" target="_blank">Buy Now with PayPal</a>
             <p class="guarantee">🔒 Secure payment • Instant delivery • 30-day refund</p>
         </div>
     </section>
 
     <section class="features">
         <div class="container">
-            <h2 class="section-title">What You'll Learn</h2>
+            <h2 class="section-title">What You'll Get</h2>
             <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon">📱</div><h3>Channel Setup</h3><p>Telegram, Discord, WhatsApp, Signal — connect all your messaging platforms in minutes.</p></div>
-                <div class="feature-card"><div class="feature-icon">🌐</div><h3>Browser Automation</h3><p>Control web browsers programmatically. Automate web tasks, testing, and data extraction.</p></div>
-                <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI Agent Mastery</h3><p>Create sub-agents, set up automation workflows, and delegate tasks effectively.</p></div>
-                <div class="feature-card"><div class="feature-icon">⏰</div><h3>Cron Jobs</h3><p>Schedule automated tasks. Your AI works 24/7 while you sleep.</p></div>
-                <div class="feature-card"><div class="feature-icon">🔌</div><h3>MCP Integration</h3><p>Connect to MCP servers, external APIs, and extend functionality.</p></div>
-                <div class="feature-card"><div class="feature-icon">🛠️</div><h3>Custom Skills</h3><p>Create your own skills and commands tailored to your workflow.</p></div>
+                <div class="feature-card"><div class="feature-icon">🦁</div><h3>OpenClaw Pro Guide</h3><p>Complete setup guide for OpenClaw — your personal AI assistant.</p></div>
+                <div class="feature-card"><div class="feature-icon">⚡</div><h3>n8n Templates</h3><p>Ready-to-use automation workflows for Telegram, Discord, Webhooks, and more.</p></div>
+                <div class="feature-card"><div class="feature-icon">💡</div><h3>AI Prompt Packs</h3><p>100+ curated prompts for business, coding, content creation, and automation.</p></div>
+                <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI Agent Mastery</h3><p>Create sub-agents, set up automation workflows, and delegate tasks.</p></div>
+                <div class="feature-card"><div class="feature-icon">📊</div><h3>Notion Startup OS</h3><p>Complete business management template — CRM, projects, finances.</p></div>
+                <div class="feature-card"><div class="feature-icon">🔌</div><h3>MCP Integration Guide</h3><p>Connect to n8n, external APIs, and extend functionality.</p></div>
             </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Digital Products</h2>
+            <p class="section-subtitle">Everything you need to start your AI automation business</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge badge-new">BESTSELLER</span>
+                    <h3>🦁 OpenClaw Pro Bundle</h3>
+                    <div class="price-tag">$49</div>
+                    <p>Complete setup guide + all templates + priority support</p>
+                </div>
+                <div class="product-card">
+                    <span class="badge badge-new">NEW</span>
+                    <h3>⚡ n8n Automation Templates</h3>
+                    <div class="price-tag">$29</div>
+                    <p>20 ready-to-use workflows for marketing, lead capture, and more.</p>
+                </div>
+                <div class="product-card">
+                    <span class="badge badge-new">NEW</span>
+                    <h3>💡 AI Prompt Master Pack</h3>
+                    <div class="price-tag">$19</div>
+                    <p>100+ prompts for business, coding, content, and automation.</p>
+                </div>
+                <div class="product-card">
+                    <h3>📊 Notion Startup OS</h3>
+                    <div class="price-tag">$29</div>
+                    <p>CRM, project management, and finance tracking in one template.</p>
+                </div>
+                <div class="product-card">
+                    <h3>💰 Wedding Planner Bundle</h3>
+                    <div class="price-tag">$47</div>
+                    <p>Complete wedding planning template with budget, guest list, timeline.</p>
+                </div>
+                <div class="product-card">
+                    <h3>👥 Guest List Manager</h3>
+                    <div class="price-tag">$17</div>
+                    <p>Track RSVPs, meals, and seating arrangements easily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="membership">
+        <div class="container" style="text-align: center;">
+            <h2>💎 Pro Membership</h2>
+            <p style="opacity: 0.9; margin: 15px 0 25px;">Get new templates every month + priority support</p>
+            <div class="price-small">$9<span>/month</span></div>
+            <a href="https://paypal.me/rypidong/9" class="cta-button" target="_blank">Join Membership</a>
+            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">
+                ✓ New n8n templates monthly<br>
+                ✓ Priority support<br>
+                ✓ Early access to new products<br>
+                ✓ Cancel anytime
+            </p>
         </div>
     </section>
 
     <section class="inside">
         <div class="container">
-            <h2 class="section-title">What's Inside</h2>
+            <h2 class="section-title">What's Included in the $49 Bundle</h2>
             <ul class="inside-list">
-                <li><strong>Getting Started Guide</strong> — Account creation & initial setup</li>
-                <li><strong>Channel Configuration</strong> — Connect Telegram, Discord, WhatsApp, Signal</li>
+                <li><strong>OpenClaw Setup Guide</strong> — Account creation, channels, config</li>
+                <li><strong>Channel Configuration</strong> — Telegram, Discord, WhatsApp, Signal</li>
                 <li><strong>Browser Automation</strong> — Complete setup & usage guide</li>
-                <li><strong>Node Pairing</strong> — Connect iPhone, Mac, Windows devices</li>
-                <li><strong>AI Agent Strategies</strong> — Prompt engineering & delegation</li>
-                <li><strong>Cron Jobs Setup</strong> — Schedule automation tasks</li>
-                <li><strong>Heartbeat Monitoring</strong> — Proactive health checks</li>
+                <li><strong>20 n8n Workflow Templates</strong> — Ready to deploy</li>
+                <li><strong>100+ AI Prompts</strong> — Business, coding, content</li>
+                <li><strong>Notion Startup OS</strong> — CRM & business management</li>
+                <li><strong>Cron Jobs & Heartbeats</strong> — Automate 24/7</li>
+                <li><strong>MCP Integration</strong> — Connect n8n, APIs, tools</li>
                 <li><strong>Security Best Practices</strong> — API keys, access control</li>
                 <li><strong>Use Case Examples</strong> — Research, content, coding, automation</li>
-                <li><strong>Troubleshooting</strong> — Common issues & solutions</li>
             </ul>
         </div>
     </section>
-
-    <section class="products">
 
     <footer>
         <div class="container">
