@@ -2,6 +2,8 @@ export type Platform = "tiktok" | "instagram" | "youtube";
 
 export type UserRole = "admin" | "creator" | "clipper";
 
+export type CampaignStatus = "active" | "paused" | "completed";
+
 export interface Clip {
   id: string;
   title: string;
@@ -16,10 +18,16 @@ export interface Clip {
 
 export interface Campaign {
   id: string;
-  name: string;
-  description?: string;
-  sourceUrl?: string;
+  title: string;
+  description: string;
+  budget: number;
+  status: CampaignStatus;
+  creatorId: string;
+  creatorName: string;
+  whopLink?: string;
+  payoutRate: number;
   clips: Clip[];
+  joinedClipperIds: string[];
   createdAt: Date;
 }
 

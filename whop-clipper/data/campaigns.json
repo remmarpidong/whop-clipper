@@ -1,0 +1,47 @@
+[
+  {
+    "id": "campaign_1773072000000_sample1",
+    "title": "Tech Review Clips",
+    "description": "Looking for skilled clippers to create short-form content from our tech review videos. Focus on highlights, unboxings, and product comparisons.",
+    "budget": 5000,
+    "status": "active",
+    "creatorId": "user_1773071227467_y9ni0uetg",
+    "creatorName": "TechReview Pro",
+    "whopLink": "https://whop.com/techreview",
+    "payoutRate": 10,
+    "clips": [],
+    "joinedClipperIds": [],
+    "createdAt": 1773072000000,
+    "updatedAt": 1773072000000
+  },
+  {
+    "id": "campaign_1773072000000_sample2",
+    "title": "Gaming Highlights",
+    "description": "Create exciting gaming montages and highlights from our streaming sessions. Must be familiar with popular games and trends.",
+    "budget": 3000,
+    "status": "active",
+    "creatorId": "user_1773071227467_y9ni0uetg",
+    "creatorName": "GamingHub",
+    "whopLink": "https://whop.com/gaminghub",
+    "payoutRate": 8,
+    "clips": [],
+    "joinedClipperIds": [],
+    "createdAt": 1773072000000,
+    "updatedAt": 1773072000000
+  },
+  {
+    "id": "campaign_1773072000000_sample3",
+    "title": "Fitness Tips Series",
+    "description": "Help us create quick fitness tips and workout clips from our longer training videos. Focus on actionable advice viewers can use immediately.",
+    "budget": 2000,
+    "status": "paused",
+    "creatorId": "user_1773071227467_y9ni0uetg",
+    "creatorName": "FitLife TV",
+    "whopLink": "https://whop.com/fitlife",
+    "payoutRate": 5,
+    "clips": [],
+    "joinedClipperIds": [],
+    "createdAt": 1773072000000,
+    "updatedAt": 1773072000000
+  }
+]
