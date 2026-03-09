@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { getCampaign, joinCampaign, leaveCampaign } from "@/lib/campaignStore";
+import { getCampaign, joinCampaign, leaveCampaign, hasJoinedCampaign } from "@/lib/campaignStore";
+import { getUserById, userHasRole } from "@/lib/userStore";
 
+// POST - Join a campaign
 export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -14,6 +16,15 @@ export async function POST(
       return NextResponse.json(
         { error: "Not authenticated" },
         { status: 401 }
+      );
+    }
+
+    // Check if user has clipper role
+    const user = getUserById(session.user.id);
+    if (!user || !userHasRole(user, "clipper")) {
+      return NextResponse.json(
+        { error: "Only users with clipper role can join campaigns" },
+        { status: 403 }
       );
     }
 
@@ -54,6 +65,7 @@ export async function POST(
   }
 }
 
+// DELETE - Leave a campaign
 export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }

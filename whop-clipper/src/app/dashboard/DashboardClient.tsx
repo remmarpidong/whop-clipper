@@ -31,6 +31,7 @@ export default function DashboardClient({ session }: { session: Session }) {
   const [statusFilter, setStatusFilter] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
   const [creating, setCreating] = useState(false);
 
   // Fetch campaigns
@@ -153,6 +154,23 @@ export default function DashboardClient({ session }: { session: Session }) {
         />
       )}
 
+      {/* Campaign Detail Modal */}
+      {selectedCampaign && (
+        <CampaignDetailModal 
+          campaign={selectedCampaign}
+          currentUserId={session.user?.id}
+          onClose={() => setSelectedCampaign(null)}
+          onJoin={() => {
+            joinCampaign(selectedCampaign.id);
+            setSelectedCampaign(null);
+          }}
+          onLeave={() => {
+            leaveCampaign(selectedCampaign.id);
+            setSelectedCampaign(null);
+          }}
+        />
+      )}
+
       {/* Main Content */}
       <main className="pt-24 pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -251,6 +269,7 @@ export default function DashboardClient({ session }: { session: Session }) {
                       currentUserId={session.user?.id}
                       onJoin={() => joinCampaign(campaign.id)}
                       onLeave={() => leaveCampaign(campaign.id)}
+                      onClick={() => setSelectedCampaign(campaign)}
                     />
                   ))
                 )}
@@ -320,6 +339,7 @@ export default function DashboardClient({ session }: { session: Session }) {
                         currentUserId={session.user?.id}
                         onJoin={() => joinCampaign(campaign.id)}
                         onLeave={() => leaveCampaign(campaign.id)}
+                        onClick={() => setSelectedCampaign(campaign)}
                         isJoined
                       />
                     ))}
@@ -366,30 +386,45 @@ function CampaignCard({
   currentUserId, 
   onJoin, 
   onLeave,
-  isJoined = false 
+  isJoined = false,
+  onClick,
 }: { 
   campaign: Campaign;
   currentUserId?: string;
   onJoin: () => void;
   onLeave: () => void;
   isJoined?: boolean;
+  onClick?: () => void;
 }) {
   const isOwner = campaign.creatorId === currentUserId;
   const hasJoined = campaign.joinedClipperIds?.includes(currentUserId) || isJoined;
 
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-zinc-700 transition-colors">
-      <div className="flex items-start justify-between mb-4">
-        <h3 className="text-lg font-semibold">{campaign.title}</h3>
-        <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-          campaign.status === "active" 
-            ? "bg-emerald-500/10 text-emerald-400"
-            : campaign.status === "paused"
-            ? "bg-yellow-500/10 text-yellow-400"
-            : "bg-zinc-500/10 text-zinc-400"
-        }`}>
-          {campaign.status}
-        </span>
+    <div 
+      className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-zinc-700 transition-colors cursor-pointer group"
+      onClick={onClick}
+    >
+      {/* Thumbnail placeholder with gradient */}
+      <div className="h-32 -mx-6 -mt-6 mb-4 rounded-t-2xl bg-gradient-to-br from-violet-600/20 via-indigo-600/20 to-zinc-800 relative overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Video className="h-12 w-12 text-zinc-700" />
+        </div>
+        {/* Status badge */}
+        <div className="absolute top-3 right-3">
+          <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+            campaign.status === "active" 
+              ? "bg-emerald-500/10 text-emerald-400"
+              : campaign.status === "paused"
+              ? "bg-yellow-500/10 text-yellow-400"
+              : "bg-zinc-500/10 text-zinc-400"
+          }`}>
+            {campaign.status}
+          </span>
+        </div>
+      </div>
+      
+      <div className="flex items-start justify-between mb-3">
+        <h3 className="text-lg font-semibold group-hover:text-violet-400 transition-colors">{campaign.title}</h3>
       </div>
       
       <p className="text-sm text-zinc-400 mb-4 line-clamp-2">
@@ -414,7 +449,7 @@ function CampaignCard({
         <span>by {campaign.creatorName}</span>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
         {campaign.whopLink && (
           <a
             href={campaign.whopLink}
@@ -599,6 +634,150 @@ function CreateCampaignModal({
             {loading ? "Creating..." : "Create Campaign"}
           </button>
         </form>
+      </div>
+    </div>
+  );
+}
+
+// Campaign Detail Modal
+function CampaignDetailModal({ 
+  campaign, 
+  currentUserId,
+  onClose, 
+  onJoin,
+  onLeave,
+}: { 
+  campaign: Campaign;
+  currentUserId?: string;
+  onClose: () => void; 
+  onJoin: () => void;
+  onLeave: () => void;
+}) {
+  const isOwner = campaign.creatorId === currentUserId;
+  const hasJoined = campaign.joinedClipperIds?.includes(currentUserId);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
+      <div 
+        className="w-full max-w-2xl rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header with gradient */}
+        <div className="h-40 bg-gradient-to-br from-violet-600/30 via-indigo-600/30 to-zinc-800 relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-lg bg-black/20 hover:bg-black/40 transition-colors"
+          >
+            <X className="h-5 w-5 text-white" />
+          </button>
+          <div className="absolute bottom-4 left-6">
+            <span className={`px-3 py-1 text-sm font-medium rounded-full ${
+              campaign.status === "active" 
+                ? "bg-emerald-500/20 text-emerald-400"
+                : campaign.status === "paused"
+                ? "bg-yellow-500/20 text-yellow-400"
+                : "bg-zinc-500/20 text-zinc-400"
+            }`}>
+              {campaign.status}
+            </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <h2 className="text-2xl font-bold mb-2">{campaign.title}</h2>
+          
+          <div className="flex items-center gap-4 text-sm text-zinc-400 mb-6">
+            <div className="flex items-center gap-1">
+              <User className="h-4 w-4" />
+              <span>{campaign.creatorName}</span>
+            </div>
+            <span>•</span>
+            <div className="flex items-center gap-1">
+              <Users className="h-4 w-4" />
+              <span>{campaign.joinedClipperIds?.length || 0} clippers</span>
+            </div>
+            <span>•</span>
+            <div className="flex items-center gap-1">
+              <Video className="h-4 w-4" />
+              <span>Created {new Date(campaign.createdAt).toLocaleDateString()}</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="rounded-xl bg-zinc-800/50 p-4">
+              <p className="text-sm text-zinc-400 mb-1">Budget</p>
+              <p className="text-xl font-bold text-emerald-400">${campaign.budget.toLocaleString()}</p>
+            </div>
+            <div className="rounded-xl bg-zinc-800/50 p-4">
+              <p className="text-sm text-zinc-400 mb-1">Payout/Clip</p>
+              <p className="text-xl font-bold text-violet-400">${campaign.payoutRate}</p>
+            </div>
+            <div className="rounded-xl bg-zinc-800/50 p-4">
+              <p className="text-sm text-zinc-400 mb-1">Clips Added</p>
+              <p className="text-xl font-bold text-indigo-400">{campaign.joinedClipperIds?.length || 0}</p>
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-sm font-medium text-zinc-400 mb-2">Description</h3>
+            <p className="text-zinc-300 whitespace-pre-wrap">{campaign.description}</p>
+          </div>
+
+          {campaign.whopLink && (
+            <div className="mb-6">
+              <h3 className="text-sm font-medium text-zinc-400 mb-2">Whop Link</h3>
+              <a
+                href={campaign.whopLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-violet-400 hover:text-violet-300"
+              >
+                {campaign.whopLink}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex gap-3">
+            {campaign.whopLink && (
+              <a
+                href={campaign.whopLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors"
+              >
+                View on Whop
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
+            {!isOwner && (
+              hasJoined ? (
+                <button
+                  onClick={onLeave}
+                  className="flex-1 px-4 py-3 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors"
+                >
+                  Leave Campaign
+                </button>
+              ) : campaign.status === "active" ? (
+                <button
+                  onClick={onJoin}
+                  className="flex-1 px-4 py-3 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium hover:from-violet-700 hover:to-indigo-700 transition-colors"
+                >
+                  Join Campaign
+                </button>
+              ) : (
+                <button
+                  disabled
+                  className="flex-1 px-4 py-3 rounded-lg bg-zinc-800 text-zinc-500 cursor-not-allowed"
+                >
+                  Campaign Unavailable
+                </button>
+              )
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
