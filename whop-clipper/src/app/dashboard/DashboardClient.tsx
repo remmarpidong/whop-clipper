@@ -78,7 +78,13 @@ export default function DashboardClient({ session }: { session: Session }) {
     }
   };
 
+  const [joinError, setJoinError] = useState<string | null>(null);
+  const [joinSuccess, setJoinSuccess] = useState<string | null>(null);
+  const [createSuccess, setCreateSuccess] = useState<string | null>(null);
+
   const joinCampaign = async (campaignId: string) => {
+    setJoinError(null);
+    setJoinSuccess(null);
     try {
       const res = await fetch(`/api/campaigns/${campaignId}/join`, {
         method: "POST",
@@ -87,11 +93,19 @@ export default function DashboardClient({ session }: { session: Session }) {
         // Refresh campaigns
         fetchCampaigns();
         fetchMyCampaigns();
+        setJoinSuccess("Successfully joined campaign!");
+        setTimeout(() => setJoinSuccess(null), 3000);
+      } else {
+        const data = await res.json();
+        setJoinError(data.error || "Failed to join campaign");
       }
     } catch (error) {
       console.error("Error joining campaign:", error);
+      setJoinError("An error occurred while joining");
     }
   };
+
+  const [leaveSuccess, setLeaveSuccess] = useState<string | null>(null);
 
   const leaveCampaign = async (campaignId: string) => {
     try {
@@ -101,6 +115,8 @@ export default function DashboardClient({ session }: { session: Session }) {
       if (res.ok) {
         fetchCampaigns();
         fetchMyCampaigns();
+        setLeaveSuccess("Successfully left campaign!");
+        setTimeout(() => setLeaveSuccess(null), 3000);
       }
     } catch (error) {
       console.error("Error leaving campaign:", error);
@@ -150,6 +166,8 @@ export default function DashboardClient({ session }: { session: Session }) {
           onSuccess={() => {
             setShowCreateModal(false);
             fetchCampaigns();
+            setCreateSuccess("Campaign created successfully!");
+            setTimeout(() => setCreateSuccess(null), 3000);
           }}
         />
       )}
@@ -191,6 +209,13 @@ export default function DashboardClient({ session }: { session: Session }) {
             </button>
           </div>
 
+          {/* Success Message */}
+          {createSuccess && (
+            <div className="mb-6 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm">
+              {createSuccess}
+            </div>
+          )}
+
           {/* Tabs */}
           <div className="border-b border-zinc-800 mb-8">
             <nav className="flex gap-8">
@@ -223,6 +248,23 @@ export default function DashboardClient({ session }: { session: Session }) {
           {activeTab === "discover" ? (
             /* Discover Tab - Browse campaigns to join */
             <div className="space-y-6">
+              {/* Error/Success Messages */}
+              {joinError && (
+                <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                  {joinError}
+                </div>
+              )}
+              {joinSuccess && (
+                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm">
+                  {joinSuccess}
+                </div>
+              )}
+              {leaveSuccess && (
+                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm">
+                  {leaveSuccess}
+                </div>
+              )}
+
               {/* Search/Filter */}
               <div className="flex gap-4 flex-wrap">
                 <div className="flex-1 min-w-[200px] relative">
@@ -278,6 +320,13 @@ export default function DashboardClient({ session }: { session: Session }) {
           ) : (
             /* My Work Tab - Current campaigns I'm clipping for */
             <div className="space-y-6">
+              {/* Success Message */}
+              {leaveSuccess && (
+                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm">
+                  {leaveSuccess}
+                </div>
+              )}
+
               {/* Stats */}
               <div className="grid gap-6 md:grid-cols-3">
                 <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
