@@ -7,8 +7,12 @@ import {
   Play,
   Check,
 } from "lucide-react";
+import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const session = await getServerSession(authOptions);
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Navigation */}
@@ -31,12 +35,31 @@ export default function LandingPage() {
               Pricing
             </a>
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
-          >
-            Get Started
-          </a>
+          <div className="flex items-center gap-3">
+            {session ? (
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/login"
+                  className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
+                >
+                  Get Started
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </nav>
 
@@ -66,20 +89,20 @@ export default function LandingPage() {
               reach and grow your Whop audience.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#"
+              <Link
+                href="/login"
                 className="inline-flex items-center justify-center rounded-lg h-12 px-8 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-base font-medium transition-colors"
               >
                 Start Free Trial
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/login"
                 className="inline-flex items-center justify-center rounded-lg h-12 px-8 border border-zinc-700 bg-zinc-800/50 hover:bg-zinc-800 text-base font-medium transition-colors"
               >
                 <Play className="mr-2 h-4 w-4" />
                 Watch Demo
-              </a>
+              </Link>
             </div>
             <p className="mt-4 text-sm text-zinc-500">
               No credit card required • 14-day free trial
@@ -208,13 +231,13 @@ export default function LandingPage() {
 
           {/* CTA */}
           <div className="mt-16 text-center">
-            <a
-              href="#"
+            <Link
+              href="/login"
               className="inline-flex items-center justify-center rounded-lg h-12 px-8 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-base font-medium transition-colors"
             >
               Start Creating Clips
               <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -256,12 +279,12 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+              <Link
+                href="/login"
                 className="mt-6 block w-full rounded-lg border border-zinc-700 py-2 text-center text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800"
               >
                 Start Free Trial
-              </a>
+              </Link>
             </div>
 
             {/* Pro Plan */}
@@ -294,12 +317,12 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+              <Link
+                href="/login"
                 className="mt-6 block w-full rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 py-2 text-center text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
               >
                 Start Free Trial
-              </a>
+              </Link>
             </div>
 
             {/* Enterprise Plan */}
@@ -328,12 +351,12 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#"
+              <Link
+                href="/login"
                 className="mt-6 block w-full rounded-lg border border-zinc-700 py-2 text-center text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800"
               >
                 Contact Sales
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -353,13 +376,13 @@ export default function LandingPage() {
             maximize their content reach and revenue.
           </p>
           <div className="mt-10">
-            <a
-              href="#"
+            <Link
+              href="/login"
               className="inline-flex items-center justify-center rounded-lg h-14 px-10 text-lg bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 font-medium transition-colors"
             >
               Get Started for Free
               <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            </Link>
             <p className="mt-4 text-sm text-zinc-500">
               No credit card required • 14-day free trial • Cancel anytime
             </p>

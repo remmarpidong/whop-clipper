@@ -1,0 +1,13 @@
+[
+  {
+    "id": "user_1773071227467_y9ni0uetg",
+    "email": "test@example.com",
+    "name": null,
+    "image": null,
+    "isVerified": true,
+    "otpCode": null,
+    "otpExpires": null,
+    "createdAt": 1773071227467,
+    "updatedAt": 1773071230218
+  }
+]

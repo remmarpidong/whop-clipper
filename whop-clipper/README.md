@@ -26,13 +26,31 @@ WhopClipper is like OpusClip but integrated with Whop clipping campaigns — ena
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Database**: (To be determined - Prisma + PostgreSQL recommended)
-- **Auth**: (To be determined - NextAuth or Clerk)
+- **Auth**: NextAuth.js with Google OAuth + OTP verification
+- **User Storage**: JSON file-based (easily replaceable with Supabase/PostgreSQL)
 - **Video Processing**: FFmpeg, Cloudinary, or Mux
 - **AI**: OpenAI API for clip detection and optimization
+
+## 🔐 Authentication
+
+WhopClipper uses NextAuth.js with Google OAuth for authentication. Each user must also complete an OTP (One-Time Password) verification for additional security.
+
+### Auth Features:
+- **Google OAuth**: Sign in with your Google account
+- **OTP Verification**: 6-digit code sent to your email for verification
+- **Protected Routes**: Dashboard and API routes require authentication
+- **Session Management**: JWT-based sessions with access tokens
+
+### Setting up OAuth:
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a new project
+3. Enable YouTube Data API v3
+4. Create OAuth 2.0 credentials
+5. Add `http://localhost:3000/api/auth/callback/google` to authorized redirect URIs
+6. Copy the Client ID and Secret to `.env.local`
 
 ## 📁 Project Structure
 
@@ -40,26 +58,25 @@ WhopClipper is like OpusClip but integrated with Whop clipping campaigns — ena
 whop-clipper/
 ├── src/
 │   ├── app/                 # Next.js App Router
-│   │   ├── (auth)/          # Authentication routes
-│   │   ├── (dashboard)/    # Dashboard routes
 │   │   ├── api/             # API routes
+│   │   │   ├── auth/        # Auth routes (NextAuth + OTP)
+│   │   │   └── youtube/    # YouTube API routes
+│   │   ├── dashboard/       # Protected dashboard
+│   │   ├── login/           # Login page
 │   │   ├── layout.tsx       # Root layout
 │   │   └── page.tsx         # Landing page
-│   ├── components/
-│   │   ├── ui/              # Reusable UI components
-│   │   ├── clips/           # Video clipping components
-│   │   ├── dashboard/      # Dashboard components
-│   │   └── layout/          # Layout components
+│   ├── components/          # React components
 │   ├── lib/
-│   │   ├── db.ts            # Database client
-│   │   ├── auth.ts          # Auth utilities
+│   │   ├── auth.ts          # NextAuth configuration
+│   │   ├── otp.ts           # OTP utilities
+│   │   ├── userStore.ts     # User storage (JSON-based)
 │   │   └── utils.ts         # Helper functions
-│   ├── hooks/               # Custom React hooks
 │   ├── types/               # TypeScript types
-│   └── styles/              # Global styles
+│   └── middleware.ts        # Route protection
 ├── public/                  # Static assets
-├── prisma/                  # Database schema
-└── config/                  # Configuration files
+├── data/                    # User data storage (created at runtime)
+├── .env.local               # Environment variables
+└── package.json
 ```
 
 ## 💻 Getting Started
@@ -91,28 +108,25 @@ npm run dev
 
 ### Environment Variables
 
+Create a `.env.local` file with the following variables:
+
 ```env
-# Database
-DATABASE_URL=
+# YouTube OAuth Configuration
+YOUTUBE_CLIENT_ID=your_youtube_client_id.apps.googleusercontent.com
+YOUTUBE_CLIENT_SECRET=your_youtube_client_secret
+YOUTUBE_REDIRECT_URI=http://localhost:3000/api/auth/callback/google
 
-# Auth
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=
+# Google API (optional, for additional features)
+GOOGLE_API_KEY=your_google_api_key
 
-# Social Platforms
-TIKTOK_CLIENT_KEY=
-TIKTOK_CLIENT_SECRET=
-INSTAGRAM_CLIENT_ID=
-INSTAGRAM_CLIENT_SECRET=
-YOUTUBE_API_KEY=
+# NextAuth Configuration
+NEXTAUTH_SECRET=your_nextauth_secret_generate_with_openssl
+NEXTAUTH_URL=http://localhost:3000
+```
 
-# AI
-OPENAI_API_KEY=
-
-# Video Processing
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+To generate a secure NEXTAUTH_SECRET, run:
+```bash
+openssl rand -base64 32
 ```
 
 ## 📱 User Flow
@@ -126,7 +140,9 @@ CLOUDINARY_API_SECRET=
 
 ## 🔜 Roadmap
 
-- [ ] User authentication and onboarding
+- [x] User authentication with Google OAuth
+- [x] OTP email verification
+- [x] Protected dashboard routes
 - [ ] Social platform OAuth connections
 - [ ] Video upload and storage
 - [ ] AI clip detection algorithm

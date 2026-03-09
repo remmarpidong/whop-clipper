@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { createUser, getUser, updateUser } from "@/lib/userStore";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -17,13 +18,41 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile }) {
+      // Check if user exists and has completed OTP verification
+      const existingUser = getUser(user.email!);
+      
+      if (existingUser && !existingUser.isVerified) {
+        // User hasn't completed OTP verification, don't allow sign in yet
+        return "/login?error=otp_required&email=" + encodeURIComponent(user.email!);
+      }
+      
+      // Create user if doesn't exist (auto-verify for OAuth since email is verified by Google)
+      if (!existingUser) {
+        createUser({
+          email: user.email!,
+          name: user.name,
+          image: user.image,
+          isVerified: true, // Google OAuth verifies email
+          otpCode: null,
+          otpExpires: null,
+        });
+      }
+      
+      return true;
+    },
     async session({ session, token }) {
-      if (session.user) {
+      if (session.user && token.accessToken) {
         session.accessToken = token.accessToken as string;
+        // Add user ID to session
+        const user = getUser(session.user.email!);
+        if (user) {
+          session.user.id = user.id;
+        }
       }
       return session;
     },
-    async jwt({ token, account }) {
+    async jwt({ token, account, user }) {
       if (account) {
         token.accessToken = account.access_token;
       }
@@ -32,5 +61,9 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
+    error: "/login",
+  },
+  session: {
+    strategy: "jwt",
   },
 };
