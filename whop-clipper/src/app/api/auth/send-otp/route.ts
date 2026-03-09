@@ -30,6 +30,7 @@ export async function POST(request: NextRequest) {
         isVerified: false,
         otpCode,
         otpExpires,
+        roles: ["creator", "clipper"], // Default roles
       });
     } else {
       // Update existing user's OTP
