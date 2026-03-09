@@ -1,5 +1,7 @@
 export type Platform = "tiktok" | "instagram" | "youtube";
 
+export type UserRole = "admin" | "creator" | "clipper";
+
 export interface Clip {
   id: string;
   title: string;
@@ -35,4 +37,5 @@ export interface User {
   email: string;
   name: string;
   connectedPlatforms: Platform[];
+  roles: UserRole[];
 }

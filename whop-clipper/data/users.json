@@ -4,6 +4,7 @@
     "email": "test@example.com",
     "name": null,
     "image": null,
+    "roles": ["creator", "clipper"],
     "isVerified": true,
     "otpCode": null,
     "otpExpires": null,

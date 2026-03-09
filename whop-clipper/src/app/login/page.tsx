@@ -64,7 +64,7 @@ function LoginForm() {
     }
   };
 
-  // Handle OTP verification
+  // Handle OTP verification and sign in
   const handleVerifyOTP = async () => {
     if (!otp) {
       setError("Please enter the OTP");

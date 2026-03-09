@@ -5,6 +5,7 @@ declare module "next-auth" {
     accessToken?: string;
     user?: {
       id?: string;
+      userType?: "creator" | "clipper" | null;
       name?: string;
       email?: string;
       image?: string;

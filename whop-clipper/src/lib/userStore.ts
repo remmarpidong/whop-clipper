@@ -8,7 +8,7 @@ interface User {
   email: string;
   name: string | null;
   image: string | null;
-  userType: "creator" | "clipper" | null; // "creator" = creates campaigns, "clipper" = clips for creators
+  roles: ("admin" | "creator" | "clipper")[]; // Default: ["creator", "clipper"]
   isVerified: boolean;
   otpCode: string | null;
   otpExpires: number | null;
@@ -49,7 +49,7 @@ function generateId(): string {
   return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
 
-// Create a new user
+// Create a new user with default roles ["creator", "clipper"]
 export function createUser(userData: Omit<User, "id" | "createdAt" | "updatedAt">): User {
   const users = readUsers();
   const existingUser = users.find((u) => u.email === userData.email);
@@ -59,6 +59,8 @@ export function createUser(userData: Omit<User, "id" | "createdAt" | "updatedAt"
     const updatedUser: User = {
       ...existingUser,
       ...userData,
+      // Ensure roles are set
+      roles: userData.roles || ["creator", "clipper"],
       updatedAt: Date.now(),
     };
     const index = users.findIndex((u) => u.email === userData.email);
@@ -70,6 +72,8 @@ export function createUser(userData: Omit<User, "id" | "createdAt" | "updatedAt"
   const newUser: User = {
     id: generateId(),
     ...userData,
+    // Default roles for new users: both creator and clipper
+    roles: userData.roles && userData.roles.length > 0 ? userData.roles : ["creator", "clipper"],
     createdAt: Date.now(),
     updatedAt: Date.now(),
   };
@@ -123,4 +127,20 @@ export function deleteUser(email: string): boolean {
 // List all users
 export function listUsers(): User[] {
   return readUsers();
+}
+
+// Update user roles
+export function updateUserRoles(email: string, roles: ("admin" | "creator" | "clipper")[]): User | null {
+  return updateUser(email, { roles });
+}
+
+// Check if user has a specific role
+export function userHasRole(user: User | null, role: "admin" | "creator" | "clipper"): boolean {
+  if (!user || !user.roles) return false;
+  return user.roles.includes(role);
+}
+
+// Get user by ID with roles
+export function getUserByIdWithRoles(id: string): User | null {
+  return getUserById(id);
 }
