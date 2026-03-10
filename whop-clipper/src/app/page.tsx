@@ -1,410 +1,172 @@
-import {
-  Scissors,
-  Share2,
-  TrendingUp,
-  Zap,
-  ArrowRight,
-  Play,
-  Check,
-} from "lucide-react";
-import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { Zap, Share2, TrendingUp, Check, ArrowRight, Play } from "lucide-react";
 
-export default async function LandingPage() {
-  const session = await getServerSession(authOptions);
+export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600">
-              <Scissors className="h-4 w-4 text-white" />
-            </div>
-            <span className="text-xl font-bold">WhopClipper</span>
+    <div style={{ background: '#000', color: '#fff', minHeight: '100vh' }}>
+      {/* Nav */}
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 40px', borderBottom: '1px solid #222' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #fbbf24, #f59e0b)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ color: '#000', fontWeight: '900', fontSize: '20px' }}>C</span>
           </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm text-zinc-400 hover:text-white transition-colors">
-              Features
-            </a>
-            <a href="#how-it-works" className="text-sm text-zinc-400 hover:text-white transition-colors">
-              How it Works
-            </a>
-            <a href="#pricing" className="text-sm text-zinc-400 hover:text-white transition-colors">
-              Pricing
-            </a>
-          </div>
-          <div className="flex items-center gap-3">
-            {session ? (
-              <Link
-                href="/dashboard"
-                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
-              >
-                Dashboard
-              </Link>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/login"
-                  className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
-                >
-                  Get Started
-                </Link>
-              </>
-            )}
-          </div>
+          <span style={{ fontSize: '22px', fontWeight: 'bold' }}>ClipNinja</span>
+        </div>
+        <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+          <a href="#features" style={{ color: '#888', textDecoration: 'none', fontSize: '14px' }}>Features</a>
+          <a href="#how" style={{ color: '#888', textDecoration: 'none', fontSize: '14px' }}>How it Works</a>
+          <a href="#pricing" style={{ color: '#888', textDecoration: 'none', fontSize: '14px' }}>Pricing</a>
+          <button style={{ background: '#fbbf24', color: '#000', padding: '10px 20px', borderRadius: '8px', border: 'none', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>
+            Get Started
+          </button>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl" />
-          <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl" />
+      {/* Hero */}
+      <section style={{ textAlign: 'center', padding: '100px 20px 80px' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(251,191,36,0.1)', borderRadius: '999px', padding: '10px 20px', marginBottom: '32px', border: '1px solid rgba(251,191,36,0.2)' }}>
+          <Zap size={16} style={{ color: '#fbbf24' }} />
+          <span style={{ fontSize: '14px', color: '#fbbf24' }}>AI-Powered Video Clipping</span>
         </div>
+        <h1 style={{ fontSize: '56px', fontWeight: '800', marginBottom: '24px', lineHeight: 1.1, maxWidth: '800px', margin: '0 auto 24px' }}>
+          Turn Long Videos Into <span style={{ color: '#fbbf24' }}>Viral Clips</span> in Seconds
+        </h1>
+        <p style={{ fontSize: '18px', color: '#888', maxWidth: '600px', margin: '0 auto 40px', lineHeight: 1.6 }}>
+          Automatically transform YouTube videos into TikTok, Instagram Reels & YouTube Shorts. 
+          AI finds the best moments. One-click posting. Track your growth.
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
+          <button style={{ background: '#fbbf24', color: '#000', padding: '14px 32px', borderRadius: '10px', border: 'none', fontSize: '16px', fontWeight: '600', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            Start Free Trial <ArrowRight size={18} />
+          </button>
+          <button style={{ background: 'transparent', color: '#fff', padding: '14px 32px', borderRadius: '10px', border: '1px solid #333', fontSize: '16px', fontWeight: '500', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Play size={18} /> Watch Demo
+          </button>
+        </div>
+        <p style={{ marginTop: '16px', color: '#666', fontSize: '13px' }}>No credit card required • 14-day free trial</p>
+      </section>
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <span className="inline-flex items-center rounded-full bg-violet-500/10 px-3 py-1 text-sm text-violet-400 border border-violet-500/20 mb-6">
-              <Zap className="mr-1 h-3 w-3" />
-              AI-Powered Video Clipping
-            </span>
-            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Transform Your Whop Campaigns with{" "}
-              <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-                Viral Video Clips
-              </span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400">
-              Automatically turn your long-form content into short, shareable clips 
-              optimized for TikTok, Instagram Reels, and YouTube Shorts. Maximize your 
-              reach and grow your Whop audience.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center rounded-lg h-12 px-8 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-base font-medium transition-colors"
-              >
-                Start Free Trial
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center rounded-lg h-12 px-8 border border-zinc-700 bg-zinc-800/50 hover:bg-zinc-800 text-base font-medium transition-colors"
-              >
-                <Play className="mr-2 h-4 w-4" />
-                Watch Demo
-              </Link>
+      {/* Features */}
+      <section id="features" style={{ padding: '80px 20px', background: '#0a0a0a' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', marginBottom: '16px' }}>Everything You Need to Go Viral</h2>
+          <p style={{ color: '#666', textAlign: 'center', marginBottom: '48px' }}>Powerful AI tools for content creators</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            <div style={{ background: '#111', border: '1px solid #222', borderRadius: '16px', padding: '32px' }}>
+              <div style={{ width: '56px', height: '56px', background: 'rgba(251,191,36,0.15)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <Zap size={28} style={{ color: '#fbbf24' }} />
+              </div>
+              <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>AI Smart Clipping</h3>
+              <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.6 }}>Our AI analyzes videos and automatically identifies the most engaging moments for each platform.</p>
             </div>
-            <p className="mt-4 text-sm text-zinc-500">
-              No credit card required • 14-day free trial
-            </p>
+            <div style={{ background: '#111', border: '1px solid #222', borderRadius: '16px', padding: '32px' }}>
+              <div style={{ width: '56px', height: '56px', background: 'rgba(251,191,36,0.15)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <Share2 size={28} style={{ color: '#fbbf24' }} />
+              </div>
+              <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>Multi-Platform</h3>
+              <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.6 }}>Post to TikTok, Instagram Reels & YouTube Shorts with one click. Customize captions & hashtags.</p>
+            </div>
+            <div style={{ background: '#111', border: '1px solid #222', borderRadius: '16px', padding: '32px' }}>
+              <div style={{ width: '56px', height: '56px', background: 'rgba(251,191,36,0.15)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <TrendingUp size={28} style={{ color: '#fbbf24' }} />
+              </div>
+              <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>Earnings Tracking</h3>
+              <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.6 }}>Track how your clips drive traffic and sales. Monitor conversions, revenue & ROI in real-time.</p>
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Hero Image/Preview */}
-          <div className="mt-16 relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl blur-2xl opacity-30" />
-            <div className="relative rounded-2xl border border-zinc-800 bg-zinc-900/50 overflow-hidden">
-              <div className="aspect-video flex items-center justify-center bg-zinc-900">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-800">
-                    <Play className="h-8 w-8 text-zinc-400" />
-                  </div>
-                  <p className="text-zinc-500">Video Preview Coming Soon</p>
-                </div>
+      {/* How it Works */}
+      <section id="how" style={{ padding: '80px 20px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', marginBottom: '48px' }}>How ClipNinja Works</h2>
+          <div style={{ display: 'grid', gap: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '24px', background: '#111', borderRadius: '12px' }}>
+              <div style={{ width: '48px', height: '48px', background: '#fbbf24', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 'bold', fontSize: '20px', flexShrink: 0 }}>1</div>
+              <div>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Connect Your Content</h3>
+                <p style={{ color: '#666', fontSize: '14px' }}>Link your YouTube channel or upload videos directly. We support any length.</p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '24px', background: '#111', borderRadius: '12px' }}>
+              <div style={{ width: '48px', height: '48px', background: '#fbbf24', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 'bold', fontSize: '20px', flexShrink: 0 }}>2</div>
+              <div>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>AI Generates Clips</h3>
+                <p style={{ color: '#666', fontSize: '14px' }}>Our AI identifies viral moments and creates optimized clips automatically.</p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', padding: '24px', background: '#111', borderRadius: '12px' }}>
+              <div style={{ width: '48px', height: '48px', background: '#fbbf24', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 'bold', fontSize: '20px', flexShrink: 0 }}>3</div>
+              <div>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>Publish & Track</h3>
+                <p style={{ color: '#666', fontSize: '14px' }}>One-click post to all platforms. Watch your growth with detailed analytics.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-24 relative">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              Everything You Need to Go Viral
-            </h2>
-            <p className="mt-4 text-zinc-400 max-w-2xl mx-auto">
-              Powerful AI tools designed specifically for Whop creators to maximize 
-              their content reach and revenue.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Feature 1 */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10">
-                <Scissors className="h-6 w-6 text-violet-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">AI Smart Clipping</h3>
-              <p className="text-zinc-400">
-                Our AI analyzes your videos to automatically identify the most 
-                engaging moments and create perfect clips optimized for each platform.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10">
-                <Share2 className="h-6 w-6 text-indigo-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Multi-Platform Posting</h3>
-              <p className="text-zinc-400">
-                One-click posting to TikTok, Instagram Reels, YouTube Shorts, 
-                and more. Customize captions and hashtags for each platform.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10">
-                <TrendingUp className="h-6 w-6 text-emerald-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Earnings Tracking</h3>
-              <p className="text-zinc-400">
-                Track how your clips drive traffic and sales to your Whop. 
-                Monitor conversions, revenue, and ROI in real-time dashboards.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-24 bg-zinc-900/30">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              How WhopClipper Works
-            </h2>
-            <p className="mt-4 text-zinc-400 max-w-2xl mx-auto">
-              Get started in minutes with our simple three-step process
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Step 1 */}
-            <div className="relative text-center">
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 text-2xl font-bold">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Connect Your Content</h3>
-              <p className="text-zinc-400">
-                Link your YouTube channel or upload your videos directly. 
-                WhopClipper supports videos of any length.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="relative text-center">
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 text-2xl font-bold">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-2">AI Generates Clips</h3>
-              <p className="text-zinc-400">
-                Our AI identifies the most engaging moments and creates 
-                optimized clips automatically for each platform.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="relative text-center">
-              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 text-2xl font-bold">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Publish & Track</h3>
-              <p className="text-zinc-400">
-                One-click post to all platforms and watch your growth 
-                with detailed analytics and earnings tracking.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-16 text-center">
-            <Link
-              href="/login"
-              className="inline-flex items-center justify-center rounded-lg h-12 px-8 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-base font-medium transition-colors"
-            >
-              Start Creating Clips
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="mt-4 text-zinc-400 max-w-2xl mx-auto">
-              Choose the plan that fits your needs. Upgrade or downgrade anytime.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-            {/* Starter Plan */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-              <div className="text-center">
-                <h3 className="text-lg font-semibold text-zinc-300">Starter</h3>
-                <div className="mt-4 flex items-baseline justify-center">
-                  <span className="text-4xl font-bold">$19</span>
-                  <span className="text-zinc-400 ml-2">/month</span>
-                </div>
-                <p className="mt-2 text-sm text-zinc-500">Perfect for getting started</p>
-              </div>
-              <ul className="mt-6 space-y-3">
-                {[
-                  "50 clips per month",
-                  "Basic AI clipping",
-                  "2 social platforms",
-                  "Basic analytics",
-                  "Email support",
-                ].map((feature) => (
-                  <li key={feature} className="flex items-center text-sm text-zinc-300">
-                    <Check className="mr-3 h-4 w-4 text-violet-400 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
+      {/* Pricing */}
+      <section id="pricing" style={{ padding: '80px 20px', background: '#0a0a0a' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '36px', fontWeight: 'bold', textAlign: 'center', marginBottom: '48px' }}>Simple, Transparent Pricing</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            <div style={{ border: '1px solid #333', borderRadius: '16px', padding: '32px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#888' }}>Starter</h3>
+              <div style={{ margin: '16px 0' }}><span style={{ fontSize: '40px', fontWeight: 'bold' }}>$19</span><span style={{ color: '#666', marginLeft: '4px' }}>/mo</span></div>
+              <ul style={{ color: '#888', fontSize: '14px', lineHeight: '2.2', listStyle: 'none', padding: 0 }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> 50 clips/month</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Basic AI</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> 2 platforms</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Basic analytics</li>
               </ul>
-              <Link
-                href="/login"
-                className="mt-6 block w-full rounded-lg border border-zinc-700 py-2 text-center text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800"
-              >
-                Start Free Trial
-              </Link>
+              <button style={{ width: '100%', marginTop: '24px', padding: '12px', border: '1px solid #333', borderRadius: '8px', background: 'transparent', color: '#fff', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>Start Free</button>
             </div>
-
-            {/* Pro Plan */}
-            <div className="rounded-2xl border border-violet-500/50 bg-zinc-900/50 p-6 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="inline-flex items-center rounded-full bg-violet-600 px-3 py-1 text-xs font-medium text-white">
-                  Most Popular
-                </span>
-              </div>
-              <div className="text-center">
-                <h3 className="text-lg font-semibold text-white">Pro</h3>
-                <div className="mt-4 flex items-baseline justify-center">
-                  <span className="text-4xl font-bold">$49</span>
-                  <span className="text-zinc-400 ml-2">/month</span>
-                </div>
-                <p className="mt-2 text-sm text-zinc-500">For serious creators</p>
-              </div>
-              <ul className="mt-6 space-y-3">
-                {[
-                  "200 clips per month",
-                  "Advanced AI clipping",
-                  "All social platforms",
-                  "Advanced analytics",
-                  "Earnings tracking",
-                  "Priority support",
-                ].map((feature) => (
-                  <li key={feature} className="flex items-center text-sm text-zinc-300">
-                    <Check className="mr-3 h-4 w-4 text-violet-400 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
+            <div style={{ border: '2px solid #fbbf24', borderRadius: '16px', padding: '32px', background: '#111' }}>
+              <div style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', background: '#fbbf24', color: '#000', padding: '4px 16px', borderRadius: '999px', fontSize: '12px', fontWeight: '600' }}>MOST POPULAR</div>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#fff' }}>Pro</h3>
+              <div style={{ margin: '16px 0' }}><span style={{ fontSize: '40px', fontWeight: 'bold' }}>$49</span><span style={{ color: '#666', marginLeft: '4px' }}>/mo</span></div>
+              <ul style={{ color: '#888', fontSize: '14px', lineHeight: '2.2', listStyle: 'none', padding: 0 }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> 200 clips/month</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Advanced AI</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> All platforms</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Advanced analytics</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Earnings tracking</li>
               </ul>
-              <Link
-                href="/login"
-                className="mt-6 block w-full rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 py-2 text-center text-sm font-medium text-white transition-colors hover:from-violet-700 hover:to-indigo-700"
-              >
-                Start Free Trial
-              </Link>
+              <button style={{ width: '100%', marginTop: '24px', padding: '12px', border: 'none', borderRadius: '8px', background: '#fbbf24', color: '#000', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>Start Free</button>
             </div>
-
-            {/* Enterprise Plan */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-              <div className="text-center">
-                <h3 className="text-lg font-semibold text-zinc-300">Business</h3>
-                <div className="mt-4 flex items-baseline justify-center">
-                  <span className="text-4xl font-bold">$99</span>
-                  <span className="text-zinc-400 ml-2">/month</span>
-                </div>
-                <p className="mt-2 text-sm text-zinc-500">For teams and agencies</p>
-              </div>
-              <ul className="mt-6 space-y-3">
-                {[
-                  "Unlimited clips",
-                  "Premium AI features",
-                  "All platforms + API",
-                  "Full analytics suite",
-                  "Earnings tracking",
-                  "Dedicated support",
-                  "Custom branding",
-                ].map((feature) => (
-                  <li key={feature} className="flex items-center text-sm text-zinc-300">
-                    <Check className="mr-3 h-4 w-4 text-violet-400 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
+            <div style={{ border: '1px solid #333', borderRadius: '16px', padding: '32px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#888' }}>Business</h3>
+              <div style={{ margin: '16px 0' }}><span style={{ fontSize: '40px', fontWeight: 'bold' }}>$99</span><span style={{ color: '#666', marginLeft: '4px' }}>/mo</span></div>
+              <ul style={{ color: '#888', fontSize: '14px', lineHeight: '2.2', listStyle: 'none', padding: 0 }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Unlimited clips</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Premium AI</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> All platforms + API</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Full analytics</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Check size={16} style={{ color: '#fbbf24' }} /> Dedicated support</li>
               </ul>
-              <Link
-                href="/login"
-                className="mt-6 block w-full rounded-lg border border-zinc-700 py-2 text-center text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800"
-              >
-                Contact Sales
-              </Link>
+              <button style={{ width: '100%', marginTop: '24px', padding: '12px', border: '1px solid #333', borderRadius: '8px', background: 'transparent', color: '#fff', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>Contact Sales</button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-violet-600/10 blur-3xl" />
-        </div>
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">
-            Ready to Grow Your Whop Audience?
-          </h2>
-          <p className="mt-4 text-lg text-zinc-400 max-w-2xl mx-auto">
-            Join thousands of creators who are already using WhopClipper to 
-            maximize their content reach and revenue.
-          </p>
-          <div className="mt-10">
-            <Link
-              href="/login"
-              className="inline-flex items-center justify-center rounded-lg h-14 px-10 text-lg bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 font-medium transition-colors"
-            >
-              Get Started for Free
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <p className="mt-4 text-sm text-zinc-500">
-              No credit card required • 14-day free trial • Cancel anytime
-            </p>
-          </div>
-        </div>
+      {/* CTA */}
+      <section style={{ padding: '80px 20px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '16px' }}>Ready to Go Viral?</h2>
+        <p style={{ color: '#666', marginBottom: '32px' }}>Join thousands of creators growing their audience</p>
+        <button style={{ background: '#fbbf24', color: '#000', padding: '16px 40px', borderRadius: '10px', border: 'none', fontSize: '16px', fontWeight: '600', cursor: 'pointer' }}>Get Started for Free</button>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-800 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-violet-600 to-indigo-600">
-                <Scissors className="h-3 w-3 text-white" />
-              </div>
-              <span className="font-semibold">WhopClipper</span>
-            </div>
-            <p className="text-sm text-zinc-500">
-              © 2026 WhopClipper. All rights reserved.
-            </p>
+      <footer style={{ padding: '32px', textAlign: 'center', color: '#444', fontSize: '14px', borderTop: '1px solid #111' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '16px' }}>
+          <div style={{ width: '24px', height: '24px', background: '#fbbf24', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ color: '#000', fontWeight: '900', fontSize: '14px' }}>C</span>
           </div>
+          <span style={{ fontWeight: '600' }}>ClipNinja</span>
         </div>
+        <p>© 2026 ClipNinja. All rights reserved.</p>
       </footer>
     </div>
   );
