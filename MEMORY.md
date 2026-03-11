@@ -16,6 +16,7 @@
 ### Growing Team
 - Priya (Senior Engineer)
 - Alex (Operations)
+- Marcus (reports to CEO - digital products & marketing)
 
 ## Projects
 
@@ -67,27 +68,54 @@ This is the north star. Everything we do should contribute to this goal.
 
 ## Immediate Action Items (CEO Priority)
 
-### To close #3 (Execute)
-1. **Deploy whop-clipper-full to Vercel** - Push code, configure env vars
-2. **Get OAuth credentials** - Set up Google Cloud project for YouTube API
-3. **Launch to users** - Get first 10 signups
+### Issue Found: No Active Deployment
+- **whop-clipper.vercel.app** returns 404 - deployment not found
+- Need to redeploy to Vercel
+- Last commit: `5917186 Trigger redeploy` - but deployment failed/deleted
 
-### What's ready:
-- Landing page ✓
-- Login/Register with Google OAuth ✓  
-- OTP verification flow ✓
-- Dashboard UI (empty) ✓
+### Action Required
+Need to trigger new deployment from Vercel dashboard or push new commit
 
-### What's missing:
-- Video upload functionality
-- AI clipping (requires OpenAI API)
-- Multi-platform posting APIs
-- Payment/pro subscription
+### CEO Assessment
+- **Code Status:** ✅ Ready on GitHub
+- **Deployment Status:** ❌ Not live
+- **Project Status:** ⏸️ PAUSED by user
+
+### Project Paused
+- WhopClipper development paused as of March 10, 2026
+- Will revisit when ready to proceed
+
+### New Opportunity Search
+**Decision: Speed to revenue > Big product**
+
+**Chosen Path: Digital Products**
+
+**Plan:**
+- Sell digital products on Payhip
+- 6 products ready to list
+- Store name: TBD (awaiting user choice)
+
+**Quick MVP ideas:**
+1. AI Prompt Library - $19
+2. Notion Templates - $29
+3. Creator Economy Toolkit - $24
+4. Freelance Proposals - $14
+5. Wedding Planner - $19
+6. Content Creator Notion - $19
+
+### Today's Progress (March 10-11)
+- ✅ Decided on Payhip for selling
+- ✅ Prepared AI Prompts Bundle for listing
+- ✅ Created GitHub repo: https://github.com/remmarpidong/digital-products
+- ✅ User downloading to list on Payhip
+- ✅ Created OpenClaw troubleshooting products:
+  - OpenClaw Troubleshooting Guide (comprehensive)
+  - OpenClaw Quick Fixes Checklist (one-pager)
+- ✅ Created OpenClaw daily usage products:
+  - OpenClaw's Daily Handbook (day-to-day workflows)
+  - OpenClaw Common Problems Solved (50+ solutions)
+- ✅ Pushed to GitHub
 
 ---
 
-*Updated: March 10, 2026*
-
----
-
-*Updated: March 10, 2026*
+*Updated: March 11, 2026*
